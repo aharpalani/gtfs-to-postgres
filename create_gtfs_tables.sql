@@ -75,4 +75,79 @@ CREATE TABLE gtfs.trips (
 	bikes_allowed integer
 	);
 
+DROP TABLE IF EXISTS gtfs.stop_times;
+CREATE TABLE gtfs.stop_times (
+	times_uid integer,
+	trip_uid integer,
+	stop_uid integer,
+	arrival_time timestamp without time zone,
+	depature_time timestamp without time zone,
+	stop_sequence integer,
+	stop_headsign character varying,
+	pickup_type integer,
+	drop_off_type integer,
+	shape_dist_traveled double precision,
+	timepoint integer
+	);
 
+DROP TABLE IF EXISTS gtfs.calendar;
+CREATE TABLE gtfs.calendar (
+	service_uid integer,
+	service_id character varying,
+	monday boolean,
+	tuesday boolean,
+	wednesday boolean,
+	thursday boolean,
+	friday boolean,
+	saturday boolean,
+	sunday boolean
+	);
+
+DROP TABLE IF EXISTS gtfs.calendar_dates;
+CREATE TABLE gtfs.calendar_dates (
+	service_uid integer,
+	dt date,
+	exception_type integer
+	);
+	
+DROP TABLE IF EXISTS gtfs.fare_attributes;
+CREATE TABLE gtfs.fare_attributes (
+	fare_uid integer,
+	fare_id character varying,
+	price double precision,
+	currency_type character varying,
+	payment_method integer,
+	transfers integer,
+	transfer_duration integer);
+
+DROP TABLE IF EXISTS gtfs.fare_rules;
+CREATE TABLE gtfs.fare_rules (
+	fare_uid integer,
+	route_uid integer,
+	origin_id character varying,
+	destination_id character varying,
+	contains_id character varying
+	);
+
+DROP TABLE IF EXISTS gtfs.shapes;
+CREATE TABLE gtfs.shapes (
+	shape_uid integer,
+	shape_id character varying,
+	shape_pt_lat double precision,
+	shape_pt_lon double precision,
+	shape_pt_sequence integer,
+	shape_dist_traveled double precision
+	);
+
+-- gtfs.frequencies code here
+
+DROP TABLE IF EXISTS gtfs.transfers;
+CREATE TABLE gtfs.transfers (
+	transfer_uid integer,
+	from_stop_uid integer,
+	to_stop_uid integer,
+	transfer_type integer,
+	min_transfer_time integer
+	);
+
+-- gtfs.feed_info code here

@@ -45,11 +45,4 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-data/go_upx/agency.txt
-data/go_upx/calendar_dates.txt
-data/go_upx/feed_info.txt
-data/go_upx/routes.txt
-data/go_upx/shapes.txt
-data/go_upx/stops.txt
-data/go_upx/stop_times.txt
-data/go_upx/trips.txt
+data/*
