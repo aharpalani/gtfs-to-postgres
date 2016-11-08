@@ -18,6 +18,7 @@ CREATE TABLE gtfs.agency (
 	stop_uid integer,
 	stop_id character varying,
 	agency_uid integer,
+	agency_id character varying,
 	stop_code character varying,
 	stop_name character varying,
 	stop_desc character varying,
@@ -37,6 +38,7 @@ CREATE TABLE gtfs.routes (
 	route_uid integer,
 	route_id character varying,
 	agency_uid integer,
+	agency_id character varying,
 	route_short_name character varying,
 	route_long_name character varying,
 	route_desc character varying,
@@ -64,8 +66,11 @@ DROP TABLE IF EXISTS gtfs.trips;
 CREATE TABLE gtfs.trips (
 	trip_uid integer,
 	trip_id character varying,
+	agency_id character varying,
 	route_uid integer,
+	route_id character varying,
 	service_uid integer,
+	service_id character varying,
 	trip_headsign character varying,
 	trip_short_name character varying,
 	direction_id integer,
@@ -78,8 +83,11 @@ CREATE TABLE gtfs.trips (
 DROP TABLE IF EXISTS gtfs.stop_times;
 CREATE TABLE gtfs.stop_times (
 	times_uid integer,
+	agency_id character varying,
 	trip_uid integer,
+	trip_id character varying,
 	stop_uid integer,
+	stop_id character varying,
 	arrival_time timestamp without time zone,
 	depature_time timestamp without time zone,
 	stop_sequence integer,
@@ -94,6 +102,7 @@ DROP TABLE IF EXISTS gtfs.calendar;
 CREATE TABLE gtfs.calendar (
 	service_uid integer,
 	service_id character varying,
+	agency_id character varying,
 	monday boolean,
 	tuesday boolean,
 	wednesday boolean,
@@ -106,6 +115,8 @@ CREATE TABLE gtfs.calendar (
 DROP TABLE IF EXISTS gtfs.calendar_dates;
 CREATE TABLE gtfs.calendar_dates (
 	service_uid integer,
+	service_id character varying,
+	agency_id character varying,
 	dt date,
 	exception_type integer
 	);
@@ -114,6 +125,7 @@ DROP TABLE IF EXISTS gtfs.fare_attributes;
 CREATE TABLE gtfs.fare_attributes (
 	fare_uid integer,
 	fare_id character varying,
+	agency_id character varying,
 	price double precision,
 	currency_type character varying,
 	payment_method integer,
@@ -123,7 +135,10 @@ CREATE TABLE gtfs.fare_attributes (
 DROP TABLE IF EXISTS gtfs.fare_rules;
 CREATE TABLE gtfs.fare_rules (
 	fare_uid integer,
+	fare_id character varying,
+	agency_id character varying,
 	route_uid integer,
+	route_id character varying,
 	origin_id character varying,
 	destination_id character varying,
 	contains_id character varying
@@ -133,6 +148,7 @@ DROP TABLE IF EXISTS gtfs.shapes;
 CREATE TABLE gtfs.shapes (
 	shape_uid integer,
 	shape_id character varying,
+	agency_id character varying,
 	shape_pt_lat double precision,
 	shape_pt_lon double precision,
 	shape_pt_sequence integer,
@@ -144,8 +160,11 @@ CREATE TABLE gtfs.shapes (
 DROP TABLE IF EXISTS gtfs.transfers;
 CREATE TABLE gtfs.transfers (
 	transfer_uid integer,
+	agency_id character varying,
 	from_stop_uid integer,
+	from_stop_id character varying,
 	to_stop_uid integer,
+	to_stop_id character varying,
 	transfer_type integer,
 	min_transfer_time integer
 	);
