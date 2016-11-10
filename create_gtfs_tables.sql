@@ -88,8 +88,8 @@ CREATE TABLE gtfs.stop_times (
 	trip_id character varying,
 	stop_uid integer,
 	stop_id character varying,
-	arrival_time timestamp without time zone,
-	depature_time timestamp without time zone,
+	arrival_time time without time zone,
+	departure_time time without time zone,
 	stop_sequence integer,
 	stop_headsign character varying,
 	pickup_type integer,
@@ -152,7 +152,8 @@ CREATE TABLE gtfs.shapes (
 	shape_pt_lat double precision,
 	shape_pt_lon double precision,
 	shape_pt_sequence integer,
-	shape_dist_traveled double precision
+	shape_dist_traveled double precision,
+	geom geometry
 	);
 
 -- gtfs.frequencies code here
